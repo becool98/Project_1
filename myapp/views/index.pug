@@ -1,0 +1,18 @@
+extends layout
+
+block content
+ div.container.d-flex.justify-content-between 
+  div.left-block.col-md-8 პროდუქციის ჩამონათვალი
+   each item in data
+    form(action='/add/' + item.id, method='post')
+     div #{item.name}
+     div #{item.address}
+     button(type='submit') კალათაში დამატება
+  div.right-block.col-md-4 კალათა
+   if carts
+    each item in carts
+     form(action='/remove/' + item.id, method='post')
+      div #{item.name}
+      div #{item.address}
+      button(type='submit') კალათიდან წაშლა
+ 
